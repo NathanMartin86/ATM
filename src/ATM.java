@@ -17,12 +17,19 @@ public class ATM {
 
 
             if (!accounts.containsKey(name)) {
-                System.out.println("No Account Recognized, But Don't Worry We've Created an Account for You");
+                System.out.println("No Account Recognized, Would you like to create an account? [y/n]");
+                String choice = scanner.nextLine();
+                if (choice.equals("y")){
                 accounts.put(name, 100.0);//note the code for adding to the HashMap. Also note that 'name' is the object key.
+                    if (choice.equals("n")){
+                    System.out.println("Thank you, Have a nice Day");
+                    System.exit(0);
+                }
 
+                }
             }
             else if (accounts.containsKey(name)){
-                System.out.println("Welcome Back" + ""+ name+"!");
+                System.out.println("Welcome Back" +" "+ name+"!");//This only occurs when it is a returning user.
             }
 
 
@@ -30,6 +37,7 @@ public class ATM {
                 System.out.println("[1] Check your balance");
                 System.out.println("[2] Withdraw Funds");
                 System.out.println("[3] Cancel");
+                System.out.println("[4] Remove My Account");
                 String option = scanner.nextLine();
 
                 double balance = accounts.get(name);// This actually retrieves the balance.In this case 'name' is the object key. So even if you wanted the double from the Hashmap, you stil input the name.
@@ -48,9 +56,21 @@ public class ATM {
                     }
 
                 }
-                if (option.equals("3")) {
+                else if (option.equals("3")) {
                     System.out.println("Thank you, Have a nice Day");
                     System.exit(0);
+                }
+                else if (option.equals("4")){
+                    System.out.println("Are you sure you want to remove your account"+ name + "? [y/n]");
+                    String cancel = scanner.nextLine();
+                    if (cancel.equals("y")) {
+                        accounts.remove(name);
+                    }
+                        else if (cancel.equals("n")){
+                        System.out.println("Thank you, Have a nice Day");
+                        System.exit(0);
+                    }
+
                 }
 
             }
