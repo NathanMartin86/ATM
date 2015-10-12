@@ -5,7 +5,7 @@ import java.util.Scanner;
  * Created by macbookair on 10/9/15.
  */
 public class ATM {
-    public static void run() throws Exception {
+    public static void main (String[] args )throws Exception {
         HashMap<String, Double> accounts = new HashMap();//note the Syntax for creating the HashMap
         while (true) {
             System.out.println("What is your name?");
@@ -19,14 +19,15 @@ public class ATM {
             if (!accounts.containsKey(name)) {
                 System.out.println("No Account Recognized, Would you like to create an account? [y/n]");
                 String choice = scanner.nextLine();
-                if (choice.equals("y")){
-                accounts.put(name, 100.0);//note the code for adding to the HashMap. Also note that 'name' is the object key.
-                    if (choice.equals("n")){
-                    System.out.println("Thank you, Have a nice Day");
-                    System.exit(0);
-                }
+                if (choice.equals("y")) {
+                    accounts.put(name, 100.0);
+                }//note the code for adding to the HashMap. Also note that "name" is the object key.
 
-                }
+                if (choice.equals("n")){
+                    System.out.println("Thank you, Have a nice Day");
+                        System.exit(0);
+                    }
+
             }
             else if (accounts.containsKey(name)){
                 System.out.println("Welcome Back" +" "+ name+"!");//This only occurs when it is a returning user.
@@ -61,7 +62,7 @@ public class ATM {
                     System.exit(0);
                 }
                 else if (option.equals("4")){
-                    System.out.println("Are you sure you want to remove your account"+ name + "? [y/n]");
+                    System.out.println("Are you sure you want to remove your account "+ name + "? [y/n]");
                     String cancel = scanner.nextLine();
                     if (cancel.equals("y")) {
                         accounts.remove(name);
@@ -77,3 +78,5 @@ public class ATM {
         }
 
     }
+
+
